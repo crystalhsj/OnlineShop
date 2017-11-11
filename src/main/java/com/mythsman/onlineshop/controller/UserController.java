@@ -103,7 +103,7 @@ public class UserController {
 		User user = userService.findByUsername(SecurityContextHolder.getContext()
                 .getAuthentication().getName());
 		model.addAttribute("user", user);
-		return "signup";
+		return "profile";
 	}
 	
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)

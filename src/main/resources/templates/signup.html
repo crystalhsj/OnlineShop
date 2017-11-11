@@ -11,7 +11,7 @@
     		</div>
         	<div class="panel-heading">
             	<div class="panel-title text-center">
-                	<h1 class="title">Sign Up</h1>
+                	<h1 class="title">账号注册</h1>
             	</div>
         	</div>
         
@@ -24,28 +24,61 @@
 	        <div class="main-login main-center">
 	            <form class="form-horizontal" method="post" th:action="@{/signup}">
 					<input type="hidden" th:value="${user.userId}" name="userId" roleId="userId" />
+
+					<div class="form-group">
+						<label for="username" class="cols-sm-2 control-label">用户名</label><span class="bg-danger pull-right" th:if="${usernameExists}">该用户名已存在</span>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" th:value="${user.username}" id="username" name="username" roleId="username"  placeholder="请输入用户名" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password" class="cols-sm-2 control-label">密码</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="password" class="form-control" id="password" name="password" roleId="password"  placeholder="请输入密码" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="passwordConfirmation" class="cols-sm-2 control-label">密码确认</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" roleId="passwordConfirmation"  placeholder="请再次输入密码" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="lastName" class="cols-sm-2 control-label">姓</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" th:value="${user.lastName}" id="lastName" name="lastName" roleId="lastName"  placeholder="请输入你的姓" required="required"/>
+							</div>
+						</div>
+					</div>
+
 	                <div class="form-group">
-	                    <label for="firstName" class="cols-sm-2 control-label">First Name</label>
+	                    <label for="firstName" class="cols-sm-2 control-label">名字</label>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName" name="firstName" roleId="firstname"  placeholder="Enter your first name" required="required"/>
+	                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName" name="firstName" roleId="firstname"  placeholder="请输入你的名字" required="required"/>
 	                        </div>
 	                    </div>
 	                </div>
 	
-	                <div class="form-group">
-	                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
-	                    <div class="cols-sm-10">
-	                        <div class="input-group">
-	                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.lastName}" id="lastName" name="lastName" roleId="lastName"  placeholder="Enter your last name" required="required"/>
-	                        </div>
-	                    </div>
-	                </div>
+
 	
 	                <div class="form-group">
-	                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
+	                    <label for="phone" class="cols-sm-2 control-label">电话号码</label>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -55,83 +88,56 @@
 	                </div>
 	
 	                <div class="form-group">
-	                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
+	                    <label for="email" class="cols-sm-2 control-label">邮箱</label><span class="bg-danger pull-right" th:if="${emailExists}">邮箱已经注册！</span>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.email}" id="email" name="email" roleId="email"  placeholder="Enter your Email" required="required"/>
+	                            <input type="text" class="form-control" th:value="${user.email}" id="email" name="email" roleId="email"  placeholder="请输入你的邮箱账号" required="required"/>
 	                        </div>
 	                    </div>
 	                </div>
 	
-	                <div class="form-group">
-	                    <label for="username" class="cols-sm-2 control-label">Username</label><span class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
-	                    <div class="cols-sm-10">
-	                        <div class="input-group">
-	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.username}" id="username" name="username" roleId="username"  placeholder="Enter your Username" required="required"/>
-	                        </div>
-	                    </div>
-	                </div>
+
 	
 					<div class="form-group">
-	                    <label for="address" class="cols-sm-2 control-label">Address</label>
+	                    <label for="address" class="cols-sm-2 control-label">家庭住址</label>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-home fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.address}" id="address" name="address" roleId="address"  placeholder="Enter your address" required="required"/>
+	                            <input type="text" class="form-control" th:value="${user.address}" id="address" name="address" roleId="address"  placeholder="请输入你的住址" required="required"/>
 	                        </div>
 	                    </div>
 	                </div>
 	
 					<div class="form-group">
-	                    <label for="postcode" class="cols-sm-2 control-label">Postal Code</label>
+	                    <label for="postcode" class="cols-sm-2 control-label">邮编</label>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.postcode}" id="postcode" name="postcode" roleId="postcode"  placeholder="Enter your postcode" required="required"/>
+	                            <input type="text" class="form-control" th:value="${user.postcode}" id="postcode" name="postcode" roleId="postcode"  placeholder="请输入你的邮编" required="required"/>
 	                        </div>
 	                    </div>
 	                </div>
 	
 					<div class="form-group">
-	                    <label for="city" class="cols-sm-2 control-label">City</label>
+	                    <label for="city" class="cols-sm-2 control-label">城市</label>
 	                    <div class="cols-sm-10">
 	                        <div class="input-group">
 	                            <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control" th:value="${user.city}" id="city" name="city" roleId="city"  placeholder="Enter your city" required="required"/>
+	                            <input type="text" class="form-control" th:value="${user.city}" id="city" name="city" roleId="city"  placeholder="请输入你的城市" required="required"/>
 	                        </div>
 	                    </div>
 	                </div>
-	
-	                <div class="form-group">
-	                    <label for="password" class="cols-sm-2 control-label">Password</label>
-	                    <div class="cols-sm-10">
-	                        <div class="input-group">
-	                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-	                            <input type="password" class="form-control" id="password" name="password" roleId="password"  placeholder="Enter your Password" required="required"/>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <div class="form-group">
-	                    <label for="passwordConfirmation" class="cols-sm-2 control-label">Confirm Secret</label>
-	                    <div class="cols-sm-10">
-	                        <div class="input-group">
-	                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-	                            <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" roleId="passwordConfirmation"  placeholder="Confirm your Password" required="required"/>
-	                        </div>
-	                    </div>
-	                </div>
+
 	
 	                <div class="form-group ">
-	                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign up!</button>
+	                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">注册完成</button>
 	                </div>
 	                
 	                <hr />
 	                
 					<div class="form-group ">
-	                    <a  class="btn btn-info btn-lg btn-block login-button" th:href="@{/}">Cancel</a>
+	                    <a  class="btn btn-info btn-lg btn-block login-button" th:href="@{/}">取消</a>
 	                </div>
 	            </form>
 	        </div>

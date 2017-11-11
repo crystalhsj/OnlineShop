@@ -46,25 +46,25 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	          	<li class="nav-item">
 	          		<a class="nav-link" th:href="@{/cart/show}" 
 	          		th:if="${session.containsKey('cart_id') and session.cartQuantity > 0}"
-	          		th:text="${#strings.concat('Shopping Cart(', session.cartQuantity, ')')}"></a>
-	          		<a class="nav-link" href="#" 
-	          		th:unless="${session.containsKey('cart_id') and session.cartQuantity > 0}">Cart is empty</a>
+	          		th:text="${#strings.concat('购物车(', session.cartQuantity, ')')}"></a>
+	          		<a class="nav-link" href="#"
+	          		th:unless="${session.containsKey('cart_id') and session.cartQuantity > 0}">购物车(0)</a>
 	          	</li>   
 	            <li class="nav-item" sec:authorize="!isAuthenticated()">
-	              <a class="nav-link" th:href="@{/signin}">Sign In</a>
+	              <a class="nav-link" th:href="@{/signin}">登录</a>
 	            </li>
 	            <li class="nav-item" sec:authorize="!isAuthenticated()">
-	            	<a class="nav-link" th:href="@{/signup}">Sign Up</a>
+	            	<a class="nav-link" th:href="@{/signup}">注册</a>
 	            </li>
 	            <li sec:authorize="isAuthenticated()" class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span sec:authentication="name">Bob</span><span class="caret"></span></a>
         			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          				<a class="dropdown-item" th:href="@{/user/update}">Update Account</a>
-          				<a class="dropdown-item" th:href="@{/order/my_orders}">My Orders</a>
-          				<a class="dropdown-item" th:href="@{/user/remove}">Close Account</a>
+          				<a class="dropdown-item" th:href="@{/user/update}">账号信息</a>
+          				<a class="dropdown-item" th:href="@{/order/my_orders}">订单信息</a>
+          				<a class="dropdown-item" th:href="@{/user/remove}">冻结账号</a>
         			</div>
       			</li>
 	            <li sec:authorize="isAuthenticated()" >
-	            	<a class="nav-link" th:href="@{/logout}">Logout</a>
+	            	<a class="nav-link" th:href="@{/logout}">登出</a>
 				</li>
 	          </ul>
 	        </div>
@@ -74,10 +74,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <!-- /.container -->
     <br />
     <br />
-    <div th:fragment="body-bottom-footer">
+    <div th:fragment="body-bottom-footer" style="margin-top:100px">
     
     	<!-- Footer -->
-	    <footer class="py-5 bg-dark">
+	    <footer class="py-3 bg-dark fixed-bottom" >
 	      <div class="container">
 	        <p class="m-0 text-center text-white">Copyright &copy; darglk 2017</p>
 	      </div>

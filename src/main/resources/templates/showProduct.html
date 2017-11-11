@@ -11,7 +11,7 @@
 
           <h1 class="my-4">Shop Name</h1>
           <form method="get" action="/product/list" class="form-inline">
-			<input type="text" name="searchTerm" class="form-control" placeholder="Search for..."/>
+			<input type="text" name="searchTerm" class="form-control" placeholder="找点什么..."/>
 			<span class="input-group-btn">
 				<button class="btn btn-warning" type="submit">Go!</button>
 			</span>
@@ -29,13 +29,13 @@
             		<img class="card-img-top img-fluid" th:src="${product.productImageUrl}" alt="" />
             		<div class="card-body">
               			<h3 class="card-title" th:text="${product.name}"></h3>
-              			<h4 th:text="${#strings.append(product.price, '$')}"></h4>
+              			<h4 th:text="${#strings.append('￥',product.price)}"></h4>
               			<p class="card-text" th:text="${product.description}"></p>
             			</div>
             			<form th:action="@{/cart/add_to_cart}" method="post">
                   			<input type="hidden" th:value="${product.id}" name="product_id" />
                   			<button type="submit" class="btn btn-warning btn-sm float-right"> 
-                  				Add to Cart
+                  				加入购物车
                   				<i class="fa fa-shopping-cart" aria-hidden="true"></i>
                   			</button>
                   		</form>

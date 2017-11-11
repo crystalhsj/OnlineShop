@@ -12,11 +12,11 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Product</th>
+                        <th>商品名称</th>
                         <th>&nbsp;</th>
-                        <th>Quantity</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
+                        <th>数量</th>
+                        <th class="text-center">单价</th>
+                        <th class="text-center">价格</th>
                         <th> </th>
                     </tr>
                     </thead>
@@ -31,7 +31,7 @@
                                     <h4 class="media-heading"><a
                                             th:href="@{/product/show/{id}(id=${lineItem.product.id})}"
                                             th:text="${lineItem.product.name}">Product name</a></h4>
-                                    <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                    <span>商品状态: </span><span class="text-success"><strong>In Stock</strong></span>
                                 </div>
                             </div>
                         </td>
@@ -41,13 +41,13 @@
                                    th:attr="name=quantity[], value=${lineItem.quantity}, max=${lineItem.product.quantity}"/>
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong
-                                th:text="${#strings.concat(lineItem.product.price, '$')}"></strong></td>
+                                th:text="${#strings.concat('￥',lineItem.product.price)}"></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong
-                                th:text="${#strings.concat(lineItem.product.price * lineItem.quantity, '$')}"></strong>
+                                th:text="${#strings.concat('￥',lineItem.product.price * lineItem.quantity)}"></strong>
                         </td>
                         <td class="col-sm-1 col-md-1">
                             <a th:href="@{/cart/removeItem/{id}(id=${lineItem.id})}" class="btn btn-danger">
-                                <i class="fa fa-ban" aria-hidden="true"></i> Remove
+                                <i class="fa fa-ban" aria-hidden="true"></i> 删除
                             </a></td>
                     </tr>
                     </tbody>
@@ -57,24 +57,24 @@
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
-                        <td><h3>Total</h3></td>
-                        <td class="text-right"><h3 th:text="${#strings.concat(totalPrice, '$')}"></h3></td>
+                        <td><h3>总价</h3></td>
+                        <td class="text-right"><h3 th:text="${#strings.concat('￥',totalPrice)}"></h3></td>
                     </tr>
                     <tr>
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
-                        <td><a th:href="@{/cart/clearCart}" class="btn btn-warning btn-sm">Clear cart</a>  </td>
+                        <td><a th:href="@{/cart/clearCart}" class="btn btn-warning btn-sm">清空购物车</a>  </td>
                         <td>
                             <button type="submit" class="btn btn-info btn-sm">
-                                <i class="fa fa-refresh" aria-hidden="true"></i> Update Cart
+                                <i class="fa fa-refresh" aria-hidden="true"></i> 更新购物车
                             </button>
                             <a th:href="@{/product/list}" class="btn btn-default btn-sm">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Continue Shopping
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> 继续购物
                             </a></td>
                         <td>
                             <a th:href="@{/cart/preorder}" class="btn btn-success btn-sm">
-                                Checkout <i class="fa fa-play" aria-hidden="true"></i>
+                                确认订单 <i class="fa fa-play" aria-hidden="true"></i>
                             </a></td>
                     </tr>
                     </tfoot>

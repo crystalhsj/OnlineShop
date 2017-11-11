@@ -6,25 +6,14 @@
 <div class="container">
     <div class="row main">
         <div class="col-md-6">
-            <h2 class="title">My Profile</h2>
+            <h2 class="title">我的信息</h2>
             <hr/>
             <form method="post" th:action="@{/user/profile}">
                 <input type="hidden" name="id" th:value="${user.userId}"/>
 
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName"
-                                   name="firstName" roleId="firstname" placeholder="Enter your first name"
-                                   required="required"/>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="form-group">
-                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <label for="lastName" class="cols-sm-2 control-label">姓</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -36,7 +25,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
+                    <label for="firstName">名字</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.firstName}" id="firstName"
+                                   name="firstName" roleId="firstname" placeholder="Enter your first name"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label">电话</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -47,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span
+                    <label for="email" class="cols-sm-2 control-label">邮箱</label><span
                         class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -60,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="username" class="cols-sm-2 control-label">Username</label><span
+                    <label for="username" class="cols-sm-2 control-label">用户名</label><span
                         class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -73,12 +74,13 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-block ">Change Settings
+                    <button type="submit" class="btn btn-primary btn-block ">更新信息
                     </button>
                 </div>
 
             </form>
         </div>
+        <!--
         <div class="col-md-6">
             <div class="panel-heading">
                 <div class="panel-title text-center">
@@ -98,6 +100,7 @@
                 </table>
             </div>
         </div>
+        -->
     </div>
 </div>
 
