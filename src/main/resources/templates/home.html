@@ -5,10 +5,19 @@
 <!-- Page Content -->
     <div class="container">
 
+        <div class="carousel" hidden="hidden">
+            <ul>
+                <li>全场8折起售</li>
+                <li>书籍应有尽有</li>
+                <li>欢迎来到OnlineShop，请尽情购物</li>
+                <li>首次购物立减2元</li>
+                <li>当天购买，次日送达</li>
+            </ul>
+        </div>
+        <div style="height:20px"><p id="show_carousel" style="text-align:center;margin:0px;"></p></div>
+
       <div class="row">
-
         <div class="col-lg-3">
-
           <h1 class="my-4">OnlineShop</h1>
           <form method="get" action="/product/list" class="form-inline">
 			<input type="text" name="searchTerm" class="form-control" placeholder="找点什么..."/>
@@ -110,5 +119,5 @@
     <!-- /.container -->
     <div th:replace="common/header :: body-bottom-footer"/>
     <div th:replace="common/header :: body-bottom-scripts"/>
-    
+    <script src="/js/carousel.js"></script>
 </html>
