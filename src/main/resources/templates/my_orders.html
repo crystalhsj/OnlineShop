@@ -17,18 +17,23 @@
 					      <table class="table table-hover">
 					      	<tr>
 					      		<th>商品名称</th>
+								<th>&nbsp;</th>
 					      		<th>数量</th>
 					      		<th>单价</th>
 							</tr>
 					      	<tr th:each="details : ${order.orderDetails}">
-					      		<td th:text="${details.product.name}"></td>
-					      		<td th:text="${details.quantity}"></td>
-					      		<td th:text="${#strings.concat('￥',details.product.price)}"></td>
+								<td class="col-sm-1 col-md-1"><a class="thumbnail pull-left" th:href="@{/product/show/{id}(id=${details.product.id})}">
+									<img class="media-object" th:src="${details.product.productImageUrl}"
+										 style="width: 72px; height: 72px;"/> </a></td>
+					      		<td class="col-sm-8 col-md-6" th:text="${details.product.name}"></td>
+					      		<td class="col-sm-1 col-md-1" th:text="${details.quantity}"></td>
+					      		<td class="col-sm-1 col-md-1" th:text="${#strings.concat('￥',details.product.price)}"></td>
 					      	</tr>
 					      	<tr>
 					      		<th>折扣:</th>
 					      		<td>&nbsp;</td>
-					      		<th th:text="${#strings.concat('￥',order.shipping.price)}"></th>
+								<td>&nbsp;</td>
+					      		<th style="color:green;" th:text="${#strings.concat('￥',order.shipping.price)}"></th>
 					      	</tr>
 					      </table>
 					    </div>

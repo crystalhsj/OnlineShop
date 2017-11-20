@@ -61,27 +61,27 @@ public class User implements UserDetails{
     @NotEmpty(message="lastname cannot be empty.")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false ,unique = true)
     @NotEmpty(message="email address cannot be empty.")
     private String email;
     
-    @Column(name = "phone", nullable = false, unique = true)
+    @Column(name = "phone", nullable = false ,unique = true)
     @NotEmpty(message="phone number cannot be empty.")
 	@Pattern(regexp="(^$|[0-9]{9})", message="Phone number format is not correct (NNNNNNNNN eg.: 700700700).")
     private String phone;
 
     @Column(name="address")
 	@NotEmpty(message="address cannot be empty.")
-	private String address;
+    private String address;
 	
 	@Column(name="city")
-	@NotEmpty(message="city cannot be empty.")
-	private String city;
+	//@NotEmpty(message="city cannot be empty.")
+	private String city="";
 	
-	@NotEmpty(message="post code cannot be empty.")
+	//@NotEmpty(message="post code cannot be empty.")
 	@Column(name="postcode")
-	@Pattern(regexp="[0-9]{2}\\-[0-9]{3}", message="Post code is incorrect (XX-XXX eg. 20-199).") //Polish zipcode
-	private String postcode;
+	@Pattern(regexp="([0-9]{2}\\-[0-9]{3})|()", message="Post code is incorrect (XX-XXX eg. 20-199).") //Polish zipcode
+	private String postcode="";
     
     private boolean enabled=true;
 
