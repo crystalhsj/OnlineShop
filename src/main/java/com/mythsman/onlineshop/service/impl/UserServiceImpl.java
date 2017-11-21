@@ -45,6 +45,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
+    public void updateInfo(User oldUser, User newUser){
+        newUser.setUserId(oldUser.getUserId());
+        newUser.setUsername(oldUser.getUsername());
+        newUser.setPassword(oldUser.getPassword());
+        newUser.setPasswordConfirmation(oldUser.getPasswordConfirmation());
+        newUser.setUserRoles(oldUser.getUserRoles());
+        userDao.save(newUser);
+    }
+
+    @Transactional
 	public void updateUserPassword(User user) {
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPassword);

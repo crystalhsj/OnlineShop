@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import com.mythsman.onlineshop.model.User;
 import com.mythsman.onlineshop.service.UserSecurityService;
@@ -18,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -104,6 +106,14 @@ public class UserController {
                 .getAuthentication().getName());
 		model.addAttribute("user", user);
 		return "profile";
+	}
+
+	@RequestMapping(value = "/profile",method = RequestMethod.POST)
+	public String updateUserInfo(@ModelAttribute("user") User newUser){
+		User oldUser=userService.findByUsername(SecurityContextHolder.getContext()
+		.getAuthentication().getName());
+		userService.updateInfo(oldUser,newUser);
+		return "changeUserInfo";
 	}
 	
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head th:replace="common/header :: common-header"/>
 <head th:replace="common/header :: navbar" />
 <!-- Page Content -->
@@ -8,6 +8,18 @@
       <div class="row">
 
         	<div class="col-sm-12">
+					<!-- 页面统计信息
+					<div>
+						<span th:text="${orders.getTotalElements()}"></span>
+						<span th:text="${orders.getTotalPages()}"></span>
+						<span th:text="${orders.getNumber()}"></span>
+						<span th:text="${orders.getNumberOfElements()}"></span>
+						<span th:text="${orders.getSize()}"></span>
+					</div>
+					-->
+					<div th:if="${orders.getNumberOfElements() eq 0}">
+						<center><span>暂无订单信息</span></center>
+					</div>
 					<div class="card mb-3" th:each="order : ${orders}">
 					    <div class="card-header">
 					      <p class="panel-title" th:text="${#strings.concat('订单时间:  ', order.createdAt, ' 订单状态: ', order.status)}">
@@ -47,7 +59,7 @@
             			class="btn btn-warning btn-sm float-left" th:text="Previous"></a>
             		</span>
             	
-            		<span th:if="${orders.getNumberOfElements() gt 0}">
+            		<span th:if="${orders.getTotalElements()-orders.getSize()*page gt 0}">
             			<a th:href="@{/order/my_orders(page=${page + 1})}"
             			class="btn btn-warning btn-sm float-right" th:text="Next"></a>
             		</span>

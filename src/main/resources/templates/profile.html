@@ -10,7 +10,7 @@
             <h2 class="title">我的信息</h2>
             <hr/>
             <form method="post" th:action="@{/user/profile}">
-                <input type="hidden" name="id" th:value="${user.userId}"/>
+                <input type="hidden" name="id" id="userId" roleId="userId" th:value="${user.userId}"/>
 
 
                 <div class="form-group">

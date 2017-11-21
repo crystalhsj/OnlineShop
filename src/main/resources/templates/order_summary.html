@@ -9,13 +9,13 @@
 
         	<div class="col-sm-12">
         		<table class="table table-hover">
-					<tr><th>姓</th><td th:text="${order.user.lastName}"></td></tr>
-        			<tr><th>名字</th><td th:text="${order.user.firstName}"></td></tr>
-        			<tr><th>邮箱</th><td th:text="${order.user.email}"></td></tr>
-        			<tr><th>电话</th><td th:text="${order.user.phone}"></td></tr>
-        			<tr><th>地址</th><td th:text="${order.user.address}"></td></tr>
-        			<tr><th>城市</th><td th:text="${order.user.city}"></td></tr>
-        			<tr><th>邮编</th><td th:text="${order.user.postcode}"></td></tr>
+					<tr><th>姓</th><td style="text-align:center" th:text="${order.user.lastName}"></td></tr>
+        			<tr><th>名字</th><td style="text-align:center" th:text="${order.user.firstName}"></td></tr>
+        			<tr><th>邮箱</th><td style="text-align:center" th:text="${order.user.email}"></td></tr>
+        			<tr><th>电话</th><td style="text-align:center" th:text="${order.user.phone}"></td></tr>
+        			<tr><th>地址</th><td style="text-align:center" th:text="${order.user.address}"></td></tr>
+        			<tr><th>城市</th><td style="text-align:center" th:text="${order.user.city}"></td></tr>
+        			<tr><th>邮编</th><td style="text-align:center" th:text="${order.user.postcode}"></td></tr>
         		</table>
         		<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 		            <table class="table table-hover">
